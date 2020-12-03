@@ -6,8 +6,14 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var cors = require('cors');
 
+var USER_NAME = process.env.USER_NAME;
+var PASSWORD = process.env.PASSWORD;
+var HOST_NAME = process.env.MONGODB_URI;
+var DATABASE_NAME = process.env.DB_NAME;
+
+
 // Configuration
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/groceries");
+mongoose.connect('mongodb+srv://' + USER_NAME + ':' + PASSWORD + '@' + HOST_NAME + '/' + DATABASE_NAME);
 
 app.use(bodyParser.urlencoded({'extended': 'true'}));
 app.use(bodyParser.json());
